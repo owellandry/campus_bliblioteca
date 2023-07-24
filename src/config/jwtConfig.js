@@ -1,4 +1,4 @@
 module.exports = {
-  secretKey: 'tu_clave_secreta'
+  secretKey: 'mamawebo-digo-glugluglu'
 };
 

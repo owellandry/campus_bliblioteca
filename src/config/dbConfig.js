@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 const dbConnection = mysql.createConnection({
   host: 'localhost',
-  user: 'tu_usuario',
-  password: 'tu_contraseña',
-  database: 'nombre_de_tu_base_de_datos'
+  user: 'campus',
+  password: 'campus2023',
+  database: 'db_campus_bliblioteca'
 });
 
 dbConnection.connect((err) => {
