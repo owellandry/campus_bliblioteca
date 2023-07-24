@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca App</title>
+</head>
+<body>
+  <h1>Biblioteca App</h1>
+  <div>
+    <h2>Consulta de Autores y Nacionalidad</h2>
+    <button onclick="obtenerAutores()">Obtener Autores</button>
+    <div id="autores-container"></div>
+  </div>
+  <div>
+    <h2>Listado de Categorías</h2>
+    <button onclick="obtenerCategorias()">Obtener Categorías</button>
+    <div id="categorias-container"></div>
+  </div>
+  <div>
+    <h2>Editoriales y Direcciones</h2>
+    <button onclick="obtenerEditoriales()">Obtener Editoriales</button>
+    <div id="editoriales-container"></div>
+  </div>
+  <!-- Agregar otras secciones para las demás consultas -->
+  <script>
+    async function obtenerAutores() {
+      const response = await fetch('/campus/autores');
+      const data = await response.json();
+      const autoresContainer = document.getElementById('autores-container');
+      autoresContainer.innerHTML = JSON.stringify(data);
+    }
+
+    async function obtenerCategorias() {
+      const response = await fetch('/campus/categorias');
+      const data = await response.json();
+      const categoriasContainer = document.getElementById('categorias-container');
+      categoriasContainer.innerHTML = JSON.stringify(data);
+    }
+
+    async function obtenerEditoriales() {
+      const response = await fetch('/campus/editoriales');
+      const data = await response.json();
+      const editorialesContainer = document.getElementById('editoriales-container');
+      editorialesContainer.innerHTML = JSON.stringify(data);
+    }
+
+    // Agregar funciones similares para las demás consultas
+  </script>
+</body>
+</html>
