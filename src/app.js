@@ -1,21 +1,33 @@
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import autorRoutes from './routes/autorRoutes.js';
+import categoriaRoutes from './routes/categoriaRoutes.js';
+import editorialRoutes from './routes/editorialRoutes.js';
+import libroRoutes from './routes/libroRoutes.js';
+import prestamoRoutes from './routes/prestamoRoutes.js';
+import reservaRoutes from './routes/reservaRoutes.js';
+
 const app = express();
-const port = 3000;
+const PORT = 5000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Rutas
-app.use('/api/autores', require('./routes/index'));
-app.use('/api/categorias', require('./routes/categoriaRoutes'));
-app.use('/api/editoriales', require('./routes/editorialRoutes'));
-app.use('/api/estados-libro', require('./routes/estadoLibroRoutes'));
-app.use('/api/libros', require('./routes/libroRoutes'));
-app.use('/api/prestamos', require('./routes/prestamoRoutes'));
-app.use('/api/reservas', require('./routes/reservaRoutes'));
-app.use('/api/usuarios', require('./routes/usuarioRoutes'));
-
-app.listen(port, () => {
-  console.log('Servidor en ejecución en http://localhost:' + port);
+// Conexión a la base de datos
+mongoose.connect('mongodb://localhost/biblioteca-db', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
+// Middlewares
+app.use(express.json());
+
+// Rutas
+app.use('/api', autorRoutes);
+app.use('/api', categoriaRoutes);
+app.use('/api', editorialRoutes);
+app.use('/api', libroRoutes);
+app.use('/api', prestamoRoutes);
+app.use('/api', reservaRoutes);
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en http://localhost:${PORT}`);
+});
