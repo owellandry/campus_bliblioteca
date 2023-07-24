@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca App</title>
+  <link rel="stylesheet" href="app.css">
 </head>
 <body>
   <h1>Biblioteca App</h1>
@@ -22,30 +23,6 @@
     <button onclick="obtenerEditoriales()">Obtener Editoriales</button>
     <div id="editoriales-container"></div>
   </div>
-  <!-- Agregar otras secciones para las demás consultas -->
-  <script>
-    async function obtenerAutores() {
-      const response = await fetch('/campus/autores');
-      const data = await response.json();
-      const autoresContainer = document.getElementById('autores-container');
-      autoresContainer.innerHTML = JSON.stringify(data);
-    }
-
-    async function obtenerCategorias() {
-      const response = await fetch('/campus/categorias');
-      const data = await response.json();
-      const categoriasContainer = document.getElementById('categorias-container');
-      categoriasContainer.innerHTML = JSON.stringify(data);
-    }
-
-    async function obtenerEditoriales() {
-      const response = await fetch('/campus/editoriales');
-      const data = await response.json();
-      const editorialesContainer = document.getElementById('editoriales-container');
-      editorialesContainer.innerHTML = JSON.stringify(data);
-    }
-
-    // Agregar funciones similares para las demás consultas
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>

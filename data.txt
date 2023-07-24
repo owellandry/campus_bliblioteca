@@ -1,0 +1,28 @@
+filto-app/
+├── src/
+│   ├── controllers/
+│   │   ├── autorController.js
+│   │   ├── categoriaController.js
+│   │   ├── editorialController.js
+│   │   ├── libroController.js
+│   │   ├── prestamoController.js
+│   │   └── reservaController.js
+│   ├── models/
+│   │   ├── autorModel.js
+│   │   ├── categoriaModel.js
+│   │   ├── editorialModel.js
+│   │   ├── libroModel.js
+│   │   ├── prestamoModel.js
+│   │   └── reservaModel.js
+│   ├── routes/
+│   │   ├── autorRoutes.js
+│   │   ├── categoriaRoutes.js
+│   │   ├── editorialRoutes.js
+│   │   ├── libroRoutes.js
+│   │   ├── prestamoRoutes.js
+│   │   └── reservaRoutes.js
+│   └── app.js
+├── public/
+│   ├── index.html
+│   └── app.js
+└── package.json

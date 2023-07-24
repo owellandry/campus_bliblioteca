@@ -1,13 +1,41 @@
-import express from "express";
-import appCliente from './routers/cliente.js';
-const appExpress = express();
+import dotenv  from "dotenv"
+import express  from "express";
+import cookieParser from "cookie-parser";
 
-appExpress.use(express.json());
-appExpress.use("/campus", appCliente);
-const config = {
-  hostname: "127.10.16.15",
-  port: 5020
-};
-appExpress.listen(config, ()=>{
-  console.log(`http://${config.hostname}:${config.port}`);
-})
+//Modulos propios
+import configureApp from "./src/config/express.js";
+
+// Rutas
+import routas_publicas from './src/routes/publics.js';
+import router_user from "./src/routes/usuario.js";
+
+
+dotenv.config()
+
+const app = express();
+
+// Configurar la aplicación Express
+configureApp(app);
+
+app.use(cookieParser());
+
+// Definir las rutas
+app.use('/api',routas_publicas);
+app.use('/api/auth',router_user);
+
+
+
+
+
+
+// Variables de entorno
+const PORT = process.env.PORT || 4080;
+
+
+
+//Get all employees from the database
+
+
+app.listen(PORT, () => {
+    console.log(`Example app listening at http://localhost:${PORT}`)
+  })

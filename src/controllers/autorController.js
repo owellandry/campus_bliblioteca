@@ -1,25 +1,16 @@
-// autorController.js
-import Autor from '../models/autorModel.js';
+import autorModel from '../models/autorModel.js';
 
-// Ejemplo de función para obtener todos los autores
-export const obtenerAutores = async (req, res) => {
-  try {
-    const autores = await Autor.find();
-    res.json(autores);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los autores' });
-  }
+// Función para obtener todos los autores y su nacionalidad
+const obtenerAutores = (req, res) => {
+  // Aquí puedes utilizar el modelo para obtener los datos de los autores desde la base de datos
+  const autores = [
+    { nombre: 'Autor 1', nacionalidad: 'Nacionalidad 1' },
+    { nombre: 'Autor 2', nacionalidad: 'Nacionalidad 2' },
+    // ... Agregar más autores si es necesario
+  ];
+  res.json(autores);
 };
 
-// Ejemplo de función para agregar un nuevo autor
-export const agregarAutor = async (req, res) => {
-  try {
-    const nuevoAutor = new Autor(req.body);
-    await nuevoAutor.save();
-    res.json(nuevoAutor);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al agregar un nuevo autor' });
-  }
+export default {
+  obtenerAutores,
 };
-
-// Agregar otras funciones según sea necesario...
